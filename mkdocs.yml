@@ -1,7 +1,13 @@
-site_name: My Docs
+site_name: OncoRisk Documentation
 theme:
   name: material
   palette:
     scheme: slate
     primary: blue
     accent: blue
+nav:
+  - Home: index.md
+  - Analysis Tools:
+    - Overview: analysis_tools.md
+    - Network Tools Tutorial: network_tools.md
+  - Knowledge Base: knowledge_base.md
