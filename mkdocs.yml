@@ -11,3 +11,4 @@ nav:
   - 'Module 2: Somatic VCF Analysis': module2_somatic_analysis.md
   - 'Module 3: Pan-Cancer Visualizer': module3_pancancer_visual.md
   - 'Module 4: Server-Maftools': module4_maftools.md
+  - 'Comparison': comparison.md
