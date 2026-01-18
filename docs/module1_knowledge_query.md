@@ -15,6 +15,58 @@ OncoRisk includes a comprehensive knowledge base of curated oncogenic informatio
 *   **Phenotypes**: Clinical or phenotypic descriptors associated with samples, variants, or diseases.
 *   **Sources**: Provenance of data (studies, databases, pipelines) used in the knowledge base.
 
+## Knowledge Base Search Function
+The OncoRisk Knowledge Base integrates a multi-layered search system that enables researchers to efficiently discover and explore genomic, clinical, and therapeutic information.
+
+### Overview
+The Knowledge Base contains over 11,000 evidence items, 4,000+ molecular profiles, 3,890 genomic variants, 578 therapies, 435 diseases, and 169 clinical assertions—all searchable through integrated search interfaces.
+
+### Search Methods
+**1. Quick Search (Global Search)**
+The Quick Search bar at the top of every page provides rapid cross-entity searching:
+
+*   **Location**: Top navigation bar (labeled "Quick Search...")
+*   **Function**: Instantly searches across all Knowledge Base entity types.
+*   **Autocomplete**: Returns real-time suggestions as you type, categorized by entity type.
+*   **Result Types**: Shows matching therapies, molecular profiles, diseases, variants, and features with color-coded icons.
+*   **Example**: Typing "EGFR" returns results such as Anti-EGFR Monoclonal Antibody (Therapy), BRAF V600E AND EGFR L858R AND EGFR T790M (Molecular Profile), and more.
+
+**2. Data Explorer Search (Entity-Specific)**
+Each Knowledge Base section features a dedicated Data Explorer with column-based filtering and searching:
+
+*   **Assertions Section**: Search by Name, Molecular Profile, Disease, Therapies, Summary, Type, Direction, Significance, and Evidence.
+*   **Variants Section**: Filter by Name, Feature ID, Aliases, Associated Diseases, Therapies, Profiles, and Groups.
+*   **Diseases Section**: Search by Name, DOID, Aliases, and view associated Evidence Items and Assertions.
+*   **Therapies Section**: Search by Name, NCIT ID, Aliases, and view associated Evidence and Assertions.
+*   **Evidence Section**: Filter by Name, Profile, Disease, Therapies, Description, Type, Direction, and Significance.
+*   **Molecular Profiles Section**: Search by Name, Aliases, Variants, and view associated Assertions and Diseases.
+
+**3. Column Filtering**
+Within each Data Explorer view, individual column headers include search/filter textboxes. Searches are case-insensitive and support partial matching.
+
+**4. Pagination and Load Controls**
+Large result sets are paginated, and a "Load 20 more" button allows for efficient browsing.
+
+### Search Workflow Example
+**Scenario: Find therapeutic options for EGFR-mutant lung cancer**
+1.  **Quick Search**: Type "EGFR L858R".
+2.  **Navigate to Variants**: Click the Variants section in the left sidebar.
+3.  **Filter by Name**: Search "EGFR L858R" in the Name column.
+4.  **Review Results**: See associated diseases (Lung Non-small cell), therapies (Gefitinib, Afatinib), and molecular profiles.
+5.  **Deep Dive**: Click on an assertion link to see evidence and tier levels.
+
+### Key Features
+*   **Cross-Linked Entities**: Each result links to related variants, diseases, therapies, and evidence.
+*   **Evidence Attribution**: All assertions backed by evidence levels.
+*   **Standardized IDs**: Uses HGNC, DOID, and NCIT IDs.
+*   **Batch Filtering**: Multiple column searches combine with AND logic.
+
+### Integration with Analysis Tools
+Search results can be exported to:
+*   **Deep Query**: Construct complex queries.
+*   **Network Tools**: Visualize relationships among search results.
+*   **Pipeline Analysis**: Use variant/disease filters to subset genomic datasets.
+
 ## Deep Query
 The Deep Query tool allows for interactive querying of patients, variants, genes, or other entities across the knowledge base.
 
