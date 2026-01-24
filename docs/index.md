@@ -37,6 +37,7 @@ The Home page (OncoRisk landing view) gives a high-level overview and shortcuts.
 
 *   **Settings:** Configure the environment and integrations.
 *   **Help & Support:** Access documentation, tutorials, and technical support.
+*   **Contact Technical Support:** hello@phenomelongevity.com
 
 ## Basic Step-by-Step Usage
 
