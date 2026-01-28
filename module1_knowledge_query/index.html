@@ -1,0 +1,882 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../module2_somatic_analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Module 1: Knowledge Base & Query - OncoRisk Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-1-knowledge-base-quick-search-deep-query" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OncoRisk Documentation" class="md-header__button md-logo" aria-label="OncoRisk Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OncoRisk Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 1: Knowledge Base & Query
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OncoRisk Documentation" class="md-nav__button md-logo" aria-label="OncoRisk Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OncoRisk Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1: Knowledge Base & Query
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1: Knowledge Base & Query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-base-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-base-search-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Search Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Base Search Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Workflow Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Analysis Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Query
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-tools-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Tools Tutorial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Tools Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-network-tools-is-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Network Tools is for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-network-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Network Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-workflow-in-network-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Workflow in Network Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2_somatic_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2: Somatic VCF Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module3_pancancer_visual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3: Pan-Cancer Visualizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module4_maftools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4: Server-Maftools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-base-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-base-search-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Search Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Base Search Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Workflow Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Analysis Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Query
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-tools-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Tools Tutorial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Tools Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-network-tools-is-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Network Tools is for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-network-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Network Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-workflow-in-network-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Workflow in Network Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-1-knowledge-base-quick-search-deep-query">Module 1: Knowledge Base, Quick Search &amp; Deep Query</h1>
+<p>This module aggregates major precision oncology knowledge bases, such as CIViC and OncoKB, to support rapid variant queries and the exploration of association networks among oncogenic terms. It also introduces unique features for deep queries, including cancer family trees, terminology association networks representing direct and indirect relationships, and protein–mutant–drug 3D visualizations.</p>
+<h2 id="knowledge-base-entities">Knowledge Base Entities</h2>
+<p>OncoRisk includes a comprehensive knowledge base of curated oncogenic information.</p>
+<ul>
+<li><strong>Assertions</strong>: Curated clinical or functional statements linking variants, diseases, and therapies.</li>
+<li><strong>Evidence</strong>: Underlying literature or dataset-level support for assertions and profiles.</li>
+<li><strong>Molecular Profiles</strong>: Combinations of variants or biomarkers that define molecular subgroups.</li>
+<li><strong>Features</strong>: Individual molecular or clinical features used in profiles or analyses.</li>
+<li><strong>Variants</strong>: Catalog of genomic variants with annotations and links to diseases and therapies.</li>
+<li><strong>Diseases</strong>: Oncology disease entities, often aligned with common ontologies.</li>
+<li><strong>Therapies</strong>: Drugs, regimens, or interventions connected to variants and diseases.</li>
+<li><strong>Phenotypes</strong>: Clinical or phenotypic descriptors associated with samples, variants, or diseases.</li>
+<li><strong>Sources</strong>: Provenance of data (studies, databases, pipelines) used in the knowledge base.</li>
+</ul>
+<h2 id="knowledge-base-search-function">Knowledge Base Search Function</h2>
+<p>The OncoRisk Knowledge Base integrates a multi-layered search system that enables researchers to efficiently discover and explore genomic, clinical, and therapeutic information.</p>
+<h3 id="overview">Overview</h3>
+<p>The Knowledge Base contains over 11,000 evidence items, 4,000+ molecular profiles, 3,890 genomic variants, 578 therapies, 435 diseases, and 169 clinical assertions—all searchable through integrated search interfaces.</p>
+<h3 id="search-methods">Search Methods</h3>
+<p><strong>1. Quick Search (Global Search)</strong>
+The Quick Search bar at the top of every page provides rapid cross-entity searching:</p>
+<ul>
+<li><strong>Location</strong>: Top navigation bar (labeled "Quick Search...")</li>
+<li><strong>Function</strong>: Instantly searches across all Knowledge Base entity types.</li>
+<li><strong>Autocomplete</strong>: Returns real-time suggestions as you type, categorized by entity type.</li>
+<li><strong>Result Types</strong>: Shows matching therapies, molecular profiles, diseases, variants, and features with color-coded icons.</li>
+<li><strong>Example</strong>: Typing "EGFR" returns results such as Anti-EGFR Monoclonal Antibody (Therapy), BRAF V600E AND EGFR L858R AND EGFR T790M (Molecular Profile), and more.</li>
+</ul>
+<p><strong>2. Data Explorer Search (Entity-Specific)</strong>
+Each Knowledge Base section features a dedicated Data Explorer with column-based filtering and searching:</p>
+<ul>
+<li><strong>Assertions Section</strong>: Search by Name, Molecular Profile, Disease, Therapies, Summary, Type, Direction, Significance, and Evidence.</li>
+<li><strong>Variants Section</strong>: Filter by Name, Feature ID, Aliases, Associated Diseases, Therapies, Profiles, and Groups.</li>
+<li><strong>Diseases Section</strong>: Search by Name, DOID, Aliases, and view associated Evidence Items and Assertions.</li>
+<li><strong>Therapies Section</strong>: Search by Name, NCIT ID, Aliases, and view associated Evidence and Assertions.</li>
+<li><strong>Evidence Section</strong>: Filter by Name, Profile, Disease, Therapies, Description, Type, Direction, and Significance.</li>
+<li><strong>Molecular Profiles Section</strong>: Search by Name, Aliases, Variants, and view associated Assertions and Diseases.</li>
+</ul>
+<p><strong>3. Column Filtering</strong>
+Within each Data Explorer view, individual column headers include search/filter textboxes. Searches are case-insensitive and support partial matching.</p>
+<p><strong>4. Pagination and Load Controls</strong>
+Large result sets are paginated, and a "Load 20 more" button allows for efficient browsing.</p>
+<h3 id="search-workflow-example">Search Workflow Example</h3>
+<p><strong>Scenario: Find therapeutic options for EGFR-mutant lung cancer</strong>
+1.  <strong>Quick Search</strong>: Type "EGFR L858R".
+2.  <strong>Navigate to Variants</strong>: Click the Variants section in the left sidebar.
+3.  <strong>Filter by Name</strong>: Search "EGFR L858R" in the Name column.
+4.  <strong>Review Results</strong>: See associated diseases (Lung Non-small cell), therapies (Gefitinib, Afatinib), and molecular profiles.
+5.  <strong>Deep Dive</strong>: Click on an assertion link to see evidence and tier levels.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Cross-Linked Entities</strong>: Each result links to related variants, diseases, therapies, and evidence.</li>
+<li><strong>Evidence Attribution</strong>: All assertions backed by evidence levels.</li>
+<li><strong>Standardized IDs</strong>: Uses HGNC, DOID, and NCIT IDs.</li>
+<li><strong>Batch Filtering</strong>: Multiple column searches combine with AND logic.</li>
+</ul>
+<h3 id="integration-with-analysis-tools">Integration with Analysis Tools</h3>
+<p>Search results can be exported to:
+*   <strong>Deep Query</strong>: Construct complex queries.
+*   <strong>Network Tools</strong>: Visualize relationships among search results.
+*   <strong>Pipeline Analysis</strong>: Use variant/disease filters to subset genomic datasets.</p>
+<h2 id="deep-query">Deep Query</h2>
+<p>The Deep Query tool allows for interactive querying of patients, variants, genes, or other entities across the knowledge base.</p>
+<h2 id="network-tools-tutorial">Network Tools Tutorial</h2>
+<p>Network Tools in OncoRisk is an analysis module for building and visualizing biological and clinical networks derived from the knowledge base to support interpretation and hypothesis generation.</p>
+<h3 id="what-network-tools-is-for">What Network Tools is for</h3>
+<ul>
+<li>Visualizing relationships between entities such as genes, variants, diseases, therapies, and phenotypes as graphs rather than tables.</li>
+<li>Exploring connectivity patterns (e.g., which genes link multiple diseases, which therapies target overlapping molecular profiles).</li>
+<li>Supporting interpretation of analysis results from Pipeline Analysis or Deep Query by placing findings into a network context.</li>
+</ul>
+<h3 id="accessing-network-tools">Accessing Network Tools</h3>
+<p>In the left navigation under <strong>Analysis Tools</strong>, click <strong>Network Tools</strong>.</p>
+<h3 id="core-workflow-in-network-tools">Core Workflow in Network Tools</h3>
+<ol>
+<li><strong>Open Network Tools</strong>: Select <strong>Network Tools</strong> from the <strong>Analysis Tools</strong> menu.</li>
+<li><strong>Define the seed set</strong>: Choose a starting entity, such as a variant, disease, or therapy. You can often send results from a Deep Query directly to the Network Tools.</li>
+<li><strong>Configure node and edge types</strong>: Select which entities (nodes) and relationships (edges) to include in the network.</li>
+<li><strong>Generate and layout the network</strong>: Run the tool to build the graph and apply a layout algorithm for clarity.</li>
+<li><strong>Filter and style the network</strong>: Apply filters (e.g., by evidence level) and adjust visual styles (e.g., color by entity type).</li>
+<li><strong>Inspect individual nodes and edges</strong>: Click on nodes or edges to see detailed information and links to the knowledge base.</li>
+<li><strong>Expand or contract the network</strong>: Add or hide nodes to explore connections or simplify the view.</li>
+<li><strong>Export or handoff</strong>: Save the network as an image or data file.</li>
+</ol>
+<h3 id="practical-use-cases">Practical Use Cases</h3>
+<ul>
+<li>Identifying hub genes or variants that connect multiple tumor types.</li>
+<li>Mapping therapies to a patient’s variant profile.</li>
+<li>Discovering potential drug repurposing opportunities.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

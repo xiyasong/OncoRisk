@@ -1,0 +1,1933 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module1_knowledge_query/">
+      
+      
+        <link rel="next" href="../module3_pancancer_visual/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Module 2: Somatic VCF Analysis - OncoRisk Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-2-somatic-vcf-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OncoRisk Documentation" class="md-header__button md-logo" aria-label="OncoRisk Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OncoRisk Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 2: Somatic VCF Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OncoRisk Documentation" class="md-nav__button md-logo" aria-label="OncoRisk Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OncoRisk Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module1_knowledge_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1: Knowledge Base & Query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2: Somatic VCF Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2: Somatic VCF Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-tutorial-pipeline-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Tutorial: Pipeline Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Tutorial: Pipeline Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-interface-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Interface Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Interface Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-upload-file-button-top-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Upload File Button (Top-Left)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-dialog-three-upload-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Upload Dialog - Three Upload Sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Upload Dialog - Three Upload Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-vcf-file-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: VCF File / JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-2-dna-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: DNA Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-3-rna-sequence-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: RNA Sequence (Optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-privacy-security-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Privacy &amp; Security Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form-control-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Form Control Buttons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Control Buttons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clear All Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-analysis-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submit Analysis Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-jobs-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis Jobs Section
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis Jobs Section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-jobs-by-name-patient-uuid-textbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Jobs by Name, Patient, UUID... (Textbox)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-statuses-dropdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Statuses Dropdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-status-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Status Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanded-job-details-panel-after-selecting-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanded Job Details Panel (After Selecting a Job)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expanded Job Details Panel (After Selecting a Job)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-information-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Information Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-buttons-below-job-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Buttons (Below Job Metadata)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Action Buttons (Below Job Metadata)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-generation-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Generation Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-data-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export Data Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-results-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Results Table
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variant Results Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-bar-above-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Bar (Above Results)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filters Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-classification-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Classification Display
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variant Classification Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant-counts-below-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Counts (Below Search)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tier Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-variant-cards-main-results-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Variant Cards (Main Results Display)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual Variant Cards (Main Results Display)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#card-header-with-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Card Header with Buttons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-variant-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Variant Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genomic-information-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Genomic Information Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinical-significance-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical Significance Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlights-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Highlights Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-summary-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TIER SUMMARY Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oncokb-insight-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ONCOKB INSIGHT Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#therapies-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        THERAPIES Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinical-trials-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLINICAL TRIALS Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-predictions-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COMPUTATIONAL PREDICTIONS Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-preview-pane-right-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Preview Pane (Right Side)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Report Preview Pane (Right Side)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#report-viewer-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Viewer Header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-document-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDF Document Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDF Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-workflow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Workflow Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-clinical-sections-in-generated-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Clinical Sections in Generated Report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-effective-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Effective Use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module3_pancancer_visual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3: Pan-Cancer Visualizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module4_maftools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4: Server-Maftools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-tutorial-pipeline-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Tutorial: Pipeline Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Tutorial: Pipeline Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-interface-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Interface Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Interface Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-upload-file-button-top-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Upload File Button (Top-Left)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload-dialog-three-upload-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Upload Dialog - Three Upload Sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Upload Dialog - Three Upload Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-vcf-file-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: VCF File / JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-2-dna-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: DNA Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-3-rna-sequence-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: RNA Sequence (Optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-privacy-security-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Privacy &amp; Security Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form-control-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Form Control Buttons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Control Buttons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clear-all-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clear All Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-analysis-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submit Analysis Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-jobs-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis Jobs Section
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis Jobs Section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-jobs-by-name-patient-uuid-textbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Jobs by Name, Patient, UUID... (Textbox)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-statuses-dropdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All Statuses Dropdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-status-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Status Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expanded-job-details-panel-after-selecting-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expanded Job Details Panel (After Selecting a Job)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expanded Job Details Panel (After Selecting a Job)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-information-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Information Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-buttons-below-job-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Buttons (Below Job Metadata)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Action Buttons (Below Job Metadata)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-generation-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Generation Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-data-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export Data Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-results-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Results Table
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variant Results Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-bar-above-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Bar (Above Results)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filters Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variant-classification-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Classification Display
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variant Classification Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant-counts-below-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant Counts (Below Search)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tier Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-variant-cards-main-results-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual Variant Cards (Main Results Display)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual Variant Cards (Main Results Display)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#card-header-with-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Card Header with Buttons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-variant-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Variant Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genomic-information-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Genomic Information Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinical-significance-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical Significance Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlights-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Highlights Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-summary-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TIER SUMMARY Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oncokb-insight-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ONCOKB INSIGHT Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#therapies-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        THERAPIES Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clinical-trials-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLINICAL TRIALS Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computational-predictions-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COMPUTATIONAL PREDICTIONS Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-preview-pane-right-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Preview Pane (Right Side)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Report Preview Pane (Right Side)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#report-viewer-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Viewer Header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-document-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDF Document Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdf-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDF Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-workflow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Workflow Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-clinical-sections-in-generated-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Clinical Sections in Generated Report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-effective-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for Effective Use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-2-somatic-vcf-analysis">Module 2: Somatic VCF Analysis</h1>
+<p>Based on the single-query function, OncoRisk implements a semi-automated workflow for patient-specific somatic mutation analysis. This module is designed for analyzing whole somatic VCF files.</p>
+<h2 id="pipeline-analysis">Pipeline Analysis</h2>
+<p>The main feature of this module is the Pipeline Analysis tool, which allows you to upload and process genomic result files (e.g., VCF) and generate diagnostic, prognostic, and therapeutic reports. The interface allows for manual adjustment and exportation of organized outputs, accelerating the process from identifying actionable variants to delivering information back to patients.</p>
+<hr />
+<h2 id="detailed-tutorial-pipeline-analysis">Detailed Tutorial: Pipeline Analysis</h2>
+<h3 id="overview">Overview</h3>
+<p><strong>Pipeline Analysis</strong> is a comprehensive genomic analysis tool within OncoRisk that enables users to upload and analyze genomic sequencing data (VCF, DNA, RNA files), generating detailed clinical reports with variant interpretation, tier classification, therapeutic recommendations, and clinical trial information.</p>
+<h3 id="main-interface-components">Main Interface Components</h3>
+<h4 id="1-upload-file-button-top-left">1. <strong>Upload File Button</strong> (Top-Left)</h4>
+<p>Located in the toolbar next to "Analysis Jobs" heading.</p>
+<p><strong>Function:</strong> Opens the file upload dialog to initiate a new genomic analysis.</p>
+<p><strong>Steps to Use:</strong>
+1. Click the "Upload File" button (with upload icon).
+2. Dialog titled "Upload Genomic Files" appears.
+3. Choose file types for upload (see File Upload Section below).</p>
+<h3 id="file-upload-dialog-three-upload-sections">File Upload Dialog - Three Upload Sections</h3>
+<h4 id="section-1-vcf-file-json"><strong>Section 1: VCF File / JSON</strong></h4>
+<p><strong>Icon:</strong> Document/file icon</p>
+<p><strong>Description:</strong> "Upload Variant Call Format or JSON .gz files containing genomic variations"</p>
+<p><strong>Button:</strong> "Choose File"</p>
+<p><strong>Supported Formats:</strong>
+- <code>.vcf.gz</code> (Variant Call Format, gzipped)
+- <code>.json.gz</code> (JSON format, gzipped)</p>
+<p><strong>Use Case:</strong> Primary mutation data input; variants will be parsed and analyzed.</p>
+<p><strong>Technical Note:</strong> VCF files contain genomic coordinates, reference/alternate alleles, quality scores, and genotype information.</p>
+<h4 id="section-2-dna-sequence"><strong>Section 2: DNA Sequence</strong></h4>
+<p><strong>Icon:</strong> DNA helix icon</p>
+<p><strong>Description:</strong> "Upload DNA sequence files (TSV format) for genomic analysis"</p>
+<p><strong>Button:</strong> "Choose File (Optional)"</p>
+<p><strong>Supported Format:</strong>
+- <code>.tsv</code> (Tab-Separated Values)</p>
+<p><strong>Use Case:</strong> Complementary genomic data; provides context for variant annotation.</p>
+<p><strong>Technical Note:</strong> TSV files typically contain sequence identifiers, genomic positions, and nucleotide information.</p>
+<h4 id="section-3-rna-sequence-optional"><strong>Section 3: RNA Sequence (Optional)</strong></h4>
+<p><strong>Icon:</strong> DNA helix icon (similar to Section 2)</p>
+<p><strong>Description:</strong> "Upload RNA sequence files for expression analysis"</p>
+<p><strong>Button:</strong> "Choose File (Optional)"</p>
+<p><strong>Format:</strong> Typically <code>.tsv</code> or similar structured format</p>
+<p><strong>Use Case:</strong> Optional but powerful for functional analysis; links variants to gene expression changes.</p>
+<p><strong>Clinical Relevance:</strong> Expression data can support or contradict predicted variant pathogenicity.</p>
+<h3 id="data-privacy-security-section">Data Privacy &amp; Security Section</h3>
+<p><strong>Four Information Items Displayed:</strong></p>
+<ol>
+<li>
+<p>✓ <strong>"All uploads are anonymized using unique identifiers (UUID)"</strong></p>
+<ul>
+<li>Each analysis assigned unique identifier</li>
+<li>Patient identifiers removed/replaced</li>
+</ul>
+</li>
+<li>
+<p>✓ <strong>"Data is encrypted in transit and at rest using industry-standard protocols"</strong></p>
+<ul>
+<li>HTTPS for transport</li>
+<li>AES-256 or similar for storage</li>
+</ul>
+</li>
+<li>
+<p>✓ <strong>"Uploaded files are automatically deleted after 30 days"</strong></p>
+<ul>
+<li>Automatic cleanup policy</li>
+<li>30-day retention window</li>
+</ul>
+</li>
+<li>
+<p>✓ <strong>"Your data is never sold, shared, or used for purposes other than your own analysis session"</strong></p>
+<ul>
+<li>Privacy guarantee</li>
+<li>Single-use, single-user data model</li>
+</ul>
+</li>
+</ol>
+<h3 id="form-control-buttons">Form Control Buttons</h3>
+<h4 id="clear-all-button"><strong>Clear All Button</strong></h4>
+<p><strong>Location:</strong> Bottom-right of upload dialog</p>
+<p><strong>Function:</strong> Removes all selected files and resets the form.</p>
+<p><strong>Use When:</strong>
+*   Need to start over with file selection
+*   Want to change all files at once</p>
+<h4 id="submit-analysis-button"><strong>Submit Analysis Button</strong></h4>
+<p><strong>Location:</strong> Bottom-right of upload dialog (primary action button, blue)</p>
+<p><strong>Status:</strong>
+*   <strong>Disabled</strong> (grayed out) until at least VCF/JSON file is selected
+*   <strong>Enabled</strong> once primary file is chosen</p>
+<p><strong>Function:</strong> Submits the selected files to the analysis pipeline.</p>
+<p><strong>After Click:</strong>
+*   Files are uploaded and anonymized.
+*   Analysis job created with UUID.
+*   Queued for processing.
+*   Page updates to show job status.</p>
+<h3 id="analysis-jobs-section">Analysis Jobs Section</h3>
+<h4 id="search-jobs-by-name-patient-uuid-textbox"><strong>Search Jobs by Name, Patient, UUID... (Textbox)</strong></h4>
+<p><strong>Location:</strong> Top of job list</p>
+<p><strong>Function:</strong> Filter existing analysis jobs.</p>
+<p><strong>Search Parameters:</strong>
+*   Job name (filename)
+*   Patient identifier
+*   UUID (unique job identifier)
+*   Analysis ID</p>
+<p><strong>Behavior:</strong> Real-time filtering as you type.</p>
+<h4 id="all-statuses-dropdown"><strong>All Statuses Dropdown</strong></h4>
+<p><strong>Location:</strong> To the right of search box</p>
+<p><strong>Available Options:</strong>
+*   <strong>All Statuses</strong> (default) - Shows all jobs
+*   <strong>Running</strong> - Currently processing jobs
+*   <strong>Completed</strong> - Finished analyses with results
+*   <strong>Failed</strong> - Jobs that encountered errors
+*   <strong>Queued</strong> - Waiting to begin processing</p>
+<p><strong>Use Case:</strong> Filter jobs by completion state.</p>
+<h3 id="job-status-indicators">Job Status Indicators</h3>
+<p>Each job entry displays:</p>
+<ol>
+<li><strong>Status Label</strong>: "Completed" (green dot), "Running" (processing icon), "Failed" (red indicator).</li>
+<li><strong>File Name</strong>: Heading shows uploaded filename.</li>
+<li><strong>Patient/ID</strong>: Shows assigned UUID.</li>
+<li><strong>DEMO Tag</strong>: Indicates example/demo analysis.</li>
+</ol>
+<h3 id="expanded-job-details-panel-after-selecting-a-job">Expanded Job Details Panel (After Selecting a Job)</h3>
+<h4 id="job-information-section"><strong>Job Information Section</strong></h4>
+<ul>
+<li><strong>Job UUID</strong>: Full unique identifier for job.</li>
+<li><strong>Patient ID</strong>: Same as UUID (anonymized).</li>
+<li><strong>Status</strong>: Current state of job; last updated timestamp.</li>
+<li><strong>Primary File Type</strong>: Identifies input file format (VCF, JSON, etc.).</li>
+<li><strong>Initiated Time</strong>: Date and time analysis started.</li>
+<li><strong>Completion Time</strong>: Date and time analysis finished; shows processing duration.</li>
+</ul>
+<h3 id="action-buttons-below-job-metadata">Action Buttons (Below Job Metadata)</h3>
+<h4 id="parameters-button"><strong>Parameters Button</strong></h4>
+<p><strong>Location:</strong> Below job details</p>
+<p><strong>Function:</strong> View and manage analysis pipeline parameters.</p>
+<p><strong>Shows:</strong>
+*   Quality control thresholds
+*   Variant filter settings
+*   Annotation databases used
+*   Tier classification criteria</p>
+<h4 id="report-generation-button"><strong>Report Generation Button</strong></h4>
+<p><strong>Location:</strong> Next to Parameters</p>
+<p><strong>Function:</strong> Generate or regenerate analysis report.</p>
+<p><strong>Options:</strong>
+*   OncoRisk Report (full comprehensive report)
+*   Export formats available</p>
+<p><strong>Output:</strong> PDF report (35+ pages typically).</p>
+<h4 id="export-data-button"><strong>Export Data Button</strong></h4>
+<p><strong>Location:</strong> Right side of action buttons</p>
+<p><strong>Function:</strong> Download raw analysis results.</p>
+<p><strong>Formats Available:</strong>
+*   CSV/TSV tables (filterable results)
+*   JSON (machine-readable format)
+*   Excel workbooks</p>
+<h3 id="variant-results-table">Variant Results Table</h3>
+<h4 id="search-bar-above-results"><strong>Search Bar (Above Results)</strong></h4>
+<p><strong>Text:</strong> "Search by Gene, Consequence, rsID..."</p>
+<p><strong>Function:</strong> Filter variants in results table.</p>
+<p><strong>Search Capabilities:</strong>
+*   Gene symbol (KRAS, TP53, etc.)
+*   Consequence type (Missense Variant, SNV, etc.)
+*   rsID (dbSNP identifier)
+*   Genomic coordinates
+*   Protein change notation</p>
+<h4 id="filters-button"><strong>Filters Button</strong></h4>
+<p><strong>Location:</strong> Right side of search bar</p>
+<p><strong>Function:</strong> Open advanced filtering panel.</p>
+<p><strong>Filter Options Include:</strong>
+*   Variant type (SNV, MNV, indel, fusion, etc.)
+*   Consequence (missense, synonymous, frameshift, etc.)
+*   Tier classification (TIER I, II, III, Unclassified)
+*   Allele frequency
+*   Clinical significance
+*   Gene panels
+*   Functional impact scores
+*   VAF range (if RNA/DNA provided)</p>
+<h3 id="variant-classification-display">Variant Classification Display</h3>
+<h4 id="variant-counts-below-search"><strong>Variant Counts (Below Search)</strong></h4>
+<p>Shows summary statistics:</p>
+<ul>
+<li><strong>Showing of filtered</strong>: Display count (default 20 per page); total variants in analysis; indicates filtering applied.</li>
+<li><strong>Insights</strong>: Number of variants with clinical insights; actionable findings.</li>
+<li><strong>No insights</strong>: Variants without specific insights; lower clinical priority.</li>
+</ul>
+<h4 id="tier-breakdown"><strong>Tier Breakdown</strong></h4>
+<p>Shows clinical tier distribution:</p>
+<ul>
+<li><strong>TIER I</strong>: High clinical significance, FDA-approved therapies.</li>
+<li><strong>TIER II</strong>: Established clinical significance, emerging therapies.</li>
+<li><strong>TIER III</strong>: Potential clinical significance, needs further validation.</li>
+<li><strong>Unclassified</strong>: VUS or insufficient data.</li>
+</ul>
+<h3 id="individual-variant-cards-main-results-display">Individual Variant Cards (Main Results Display)</h3>
+<h4 id="card-header-with-buttons"><strong>Card Header with Buttons</strong></h4>
+<ul>
+<li><strong>BIOMARKER Tag</strong>: Color-coded by tier (TIER I=red, TIER II=orange, TIER III=yellow); clickable to expand/collapse details.</li>
+<li><strong>TIER Button</strong>: Shows assigned clinical tier; links to tier explanation.</li>
+<li><strong>"Details" Button</strong>: Expands deep-dive information panel; shows comprehensive clinical data.</li>
+</ul>
+<h4 id="core-variant-information"><strong>Core Variant Information</strong></h4>
+<ul>
+<li><strong>Gene Symbol</strong>: Primary gene affected.</li>
+<li><strong>Protein Change</strong>: HGVS notation.</li>
+<li><strong>rsID</strong>: dbSNP identifier.</li>
+<li><strong>Variant Type</strong>: SNV, MNV, Indel, etc.</li>
+<li><strong>Consequence</strong>: Predicted functional impact.</li>
+</ul>
+<h4 id="genomic-information-section"><strong>Genomic Information Section</strong></h4>
+<ul>
+<li><strong>GENOMIC LOCATION</strong>: Full genomic coordinate.</li>
+<li><strong>TRANSCRIPT</strong>: Affected gene transcript identifier.</li>
+<li><strong>cDNA CHANGE</strong>: cDNA-level notation.</li>
+<li><strong>IMPACT SCORE</strong>: Numerical prediction of variant impact.</li>
+</ul>
+<h4 id="clinical-significance-section"><strong>Clinical Significance Section</strong></h4>
+<p>Shows concordance across multiple clinical databases:
+*   <strong>OncoKB</strong>: Oncogenic / Unknown / Inconclusive
+*   <strong>ClinVar</strong>: Pathogenic / Likely Pathogenic / Benign / Conflicting
+*   <strong>CancerVar</strong>: Tier classification and confidence level
+*   <strong>AlphaMissense</strong>: likely pathogenic / likely benign / uncertain</p>
+<h4 id="highlights-section"><strong>Highlights Section</strong></h4>
+<p>Quick-view clinical tags:
+*   ✓ <strong>Is Rare</strong>
+*   ✓ <strong>Has Active Trials</strong>
+*   ✓ <strong>Is Strongly Pathogenic</strong>
+*   ✓ <strong>Has Prognostic Impact</strong>
+*   ✓ <strong>Has Fda Approved Therapy</strong>
+*   ✓ <strong>Is Likely Pathogenic</strong></p>
+<h4 id="tier-summary-section"><strong>TIER SUMMARY Section</strong></h4>
+<p><strong>Function:</strong> Brief clinical interpretation.</p>
+<h4 id="oncokb-insight-section"><strong>ONCOKB INSIGHT Section</strong></h4>
+<p><strong>Content:</strong> Curated expert interpretation from OncoKB.</p>
+<h4 id="therapies-section"><strong>THERAPIES Section</strong></h4>
+<p><strong>Function:</strong> Lists relevant targeted treatments, including therapy name, associated cancer type, and evidence level.</p>
+<h4 id="clinical-trials-section"><strong>CLINICAL TRIALS Section</strong></h4>
+<p><strong>Function:</strong> Links to active clinical studies, including trial name, phase, status, and Trial ID.</p>
+<h4 id="computational-predictions-section"><strong>COMPUTATIONAL PREDICTIONS Section</strong></h4>
+<p><strong>Function:</strong> In-silico pathogenicity predictions from tools like SIFT, POLYPHEN, and REVEL SCORE.</p>
+<h3 id="report-preview-pane-right-side">Report Preview Pane (Right Side)</h3>
+<h4 id="report-viewer-header"><strong>Report Viewer Header</strong></h4>
+<ul>
+<li><strong>Title</strong>: "Report Preview"</li>
+<li><strong>Download icon</strong> (top-right)</li>
+</ul>
+<h4 id="pdf-document-display"><strong>PDF Document Display</strong></h4>
+<ul>
+<li>Shows UPG-retrieve-report</li>
+<li>35-page comprehensive clinical report</li>
+<li>Paginated view with thumbnails</li>
+</ul>
+<h4 id="pdf-controls"><strong>PDF Controls</strong></h4>
+<ul>
+<li>Page navigation</li>
+<li>Zoom controls</li>
+<li>Print/save options</li>
+<li>Full-page view toggle</li>
+</ul>
+<h3 id="complete-workflow-summary">Complete Workflow Summary</h3>
+<p><strong>Step 1:</strong> Click "Upload File" button.
+<strong>Step 2:</strong> Select files (VCF/JSON required, DNA/RNA optional).
+<strong>Step 3:</strong> Click "Submit Analysis" button.
+<strong>Step 4:</strong> Job processed (Queued → Running → Completed).
+<strong>Step 5:</strong> Click job to view metadata, parameters, and generate report.
+<strong>Step 6:</strong> Filter and search variants (search box, "Filters" button).
+<strong>Step 7:</strong> Interpret clinical significance (TIER, OncoKB, therapies, trials).
+<strong>Step 8:</strong> Export results (raw data, PDF report).</p>
+<h3 id="key-clinical-sections-in-generated-report">Key Clinical Sections in Generated Report</h3>
+<ol>
+<li><strong>Executive Summary</strong></li>
+<li><strong>Variant Inventory</strong></li>
+<li><strong>TIER I Variants</strong></li>
+<li><strong>TIER II Variants</strong></li>
+<li><strong>TIER III Variants</strong></li>
+<li><strong>Therapeutic Recommendations</strong></li>
+<li><strong>Clinical Trial Matching</strong></li>
+<li><strong>Computational Predictions</strong></li>
+<li><strong>Gene/Disease/Therapy Links</strong></li>
+<li><strong>Methodology</strong></li>
+</ol>
+<h3 id="tips-for-effective-use">Tips for Effective Use</h3>
+<ul>
+<li>✓ <strong>Always validate with VCF file</strong></li>
+<li>✓ <strong>Add RNA data if available</strong></li>
+<li>✓ <strong>Review TIER I variants first</strong></li>
+<li>✓ <strong>Check OncoKB insights</strong></li>
+<li>✓ <strong>Cross-reference clinical trials</strong></li>
+<li>✓ <strong>Use Export Data for downstream analysis</strong></li>
+<li>✓ <strong>Keep job UUID for future reference</strong></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
